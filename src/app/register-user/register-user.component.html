@@ -1,19 +1,23 @@
 <div class="login-page">
   <mat-card class="mat-elevation-z12">
-    <mat-card-title style="text-align:center;">SignIn/SignUp</mat-card-title>
+<!--    <mat-card-title style="text-align:center;">SignIn/SignUp</mat-card-title>-->
     <mat-tab-group mat-stretch-tabs class="example-stretched-tabs">
       <mat-tab label="Sign In">
         <mat-card-content>
-          <form action="">
+          <form class="sign-in-form" novalidate #signInform="ngForm" (ngSubmit)="onSubmit1(signInform)">
             <mat-form-field>
               <input
                 matInput
                 placeholder="Email"
                 required
+                [pattern]="emailPattern"
                 name="email"
-                ngModel
+                [(ngModel)]="userInfor.email"
                 #email="ngModel">
-              <mat-error *ngIf="email.invalid">Email is required</mat-error>
+              <mat-error *ngIf="email.touched && !email.valid">
+                <span *ngIf="email.errors.required">Email is required</span>
+                <span *ngIf="email.errors.pattern">A@yahoo.com or A@gmail.com</span>
+              </mat-error>
               <mat-icon matSuffix>email</mat-icon>
             </mat-form-field>
             <mat-form-field>
@@ -23,20 +27,22 @@
                 type="password"
                 required
                 minlength="6"
+                maxlength="32"
+                [pattern]="passwordPattern"
                 name="password"
-                ngModel
+                [(ngModel)]="userInfor.password"
                 #password="ngModel">
-              <mat-error
-                *ngIf="password.errors && password.errors.required">
-                Password is required
-              </mat-error>
-              <mat-error
-                *ngIf="password.errors && password.errors.minlength">
-                Password must be of length 6
+              <mat-error *ngIf="password.touched && !password.valid">
+                <span *ngIf="password.errors.required">Password is required</span>
+                <span *ngIf="password.errors.minlength || password.errors.maxlength">Length from 6 to 32 characters</span>
+                <span *ngIf="!(password.errors.minlength || password.errors.maxlength) && password.errors.pattern">
+                  Only alphabet, digit and at least one of !@#$%^&*
+                </span>
               </mat-error>
               <mat-icon matSuffix>lock</mat-icon>
             </mat-form-field>
             <mat-checkbox>Remember Me!</mat-checkbox>
+            <mat-checkbox>Forgot Password ?</mat-checkbox>
             <button
               mat-raised-button
               color="primary"
@@ -54,19 +60,23 @@
       </mat-tab>
       <mat-tab label="Sign Up">
         <mat-card-content>
-          <form action="">
+          <form class="sign-up-form" novalidate #signUpForm="ngForm" (ngSubmit)="onSubmit2(signUpForm)">
             <mat-form-field>
               <input
                 matInput
                 placeholder="User Name"
                 required
+                minlength="6"
+                maxlength="32"
+                [pattern]="usernamePattern"
                 name="username"
-                ngModel
+                [(ngModel)]="userInfor.username"
                 #username="ngModel">
               <mat-icon matSuffix>perm_identity</mat-icon>
-              <mat-error
-                *ngIf="username.invalid">
-                Username is required
+              <mat-error *ngIf="username.touched && !username.valid">
+                <span *ngIf="username.errors.required">Username is required</span>
+                <span *ngIf="username.errors.minlength || username.errors.maxlength">Length from 6 to 32 characters</span>
+                <span *ngIf="!(username.errors.minlength || username.errors.maxlength) && username.errors.pattern">Only alphabet</span>
               </mat-error>
 
             </mat-form-field>
@@ -76,9 +86,13 @@
                 placeholder="Email"
                 required
                 name="email"
-                ngModel
+                [pattern]="emailPattern"
+                [(ngModel)]="userInfor.email"
                 #email="ngModel">
-              <mat-error *ngIf="email.invalid">Email is required</mat-error>
+              <mat-error *ngIf="email.touched && !email.valid">
+                <span *ngIf="email.errors.required">Email is required</span>
+                <span *ngIf="email.errors.pattern">Example: A@yahoo.com or A@gmail.com</span>
+              </mat-error>
               <mat-icon matSuffix>email</mat-icon>
             </mat-form-field>
             <mat-form-field>
@@ -88,16 +102,17 @@
                 type="password"
                 required
                 minlength="6"
+                maxlength="32"
+                [pattern]="passwordPattern"
+                [(ngModel)]="userInfor.password"
                 name="password"
-                ngModel
                 #password="ngModel">
-              <mat-error
-                *ngIf="password.errors && password.errors.required">
-                Password is required
-              </mat-error>
-              <mat-error
-                *ngIf="password.errors && password.errors.minlength">
-                Password must be of length 6
+              <mat-error *ngIf="password.touched && !password.valid">
+                <span *ngIf="password.errors.required">Password is required</span>
+                <span *ngIf="password.errors.minlength || password.errors.maxlength">Length from 6 to 32 characters</span>
+                <span *ngIf="!(password.errors.minlength || password.errors.maxlength) && password.errors.pattern">
+                  Only alphabet, digit and at least one of !@#$%^&*
+                </span>
               </mat-error>
               <mat-icon matSuffix>lock</mat-icon>
 
@@ -112,9 +127,12 @@
                 name="repassword"
                 ngModel
                 #repassword="ngModel">
-              <mat-error
-                *ngIf="repassword.errors && repassword.errors.required">
-                Re-Enter Password is required
+              <mat-error *ngIf="repassword.touched && !repassword.valid">
+                <span *ngIf="repassword.errors.required">Password is required</span>
+                <span *ngIf="repassword.errors.minlength || repassword.errors.maxlength">Length from 6 to 32 characters</span>
+                <span *ngIf="!(repassword.errors.minlength || repassword.errors.maxlength) && repassword.errors.pattern">
+                  Only alphabet, digit and at least one of !@#$%^&*
+                </span>
               </mat-error>
               <mat-icon matSuffix>lock</mat-icon>
             </mat-form-field>
