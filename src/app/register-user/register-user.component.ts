@@ -11,6 +11,8 @@ export class RegisterUserComponent implements OnInit {
     username: '',
     email: '',
     password: '',
+    gender: false,
+    birthday: '',
     rememberMe: false
   }
   usernamePattern = /^[a-z]{6,32}$/i;

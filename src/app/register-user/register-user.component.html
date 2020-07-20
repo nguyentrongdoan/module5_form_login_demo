@@ -41,8 +41,43 @@
               </mat-error>
               <mat-icon matSuffix>lock</mat-icon>
             </mat-form-field>
-            <mat-checkbox>Remember Me!</mat-checkbox>
-            <mat-checkbox>Forgot Password ?</mat-checkbox>
+<!--            <div>-->
+<!--              <mat-checkbox>Remember Me!</mat-checkbox>-->
+<!--              <a routerLink="/forgot-password" >Forgot password ?</a>-->
+<!--            </div>-->
+            <mat-checkbox aria-label="Remember Me" class="mat-checkbox remember-me ng-tns-c167-53 mat-accent" id="mat-checkbox-7">
+              <label class="mat-checkbox-layout" for="mat-checkbox-7-input">
+<!--                <div class="mat-checkbox-inner-container">-->
+<!--                <input type="checkbox" class="mat-checkbox-input cdk-visually-hidden" id="mat-checkbox-7-input" tabindex="0" aria-label="Remember Me" aria-checked="false">-->
+<!--                  <div matripple="" class="mat-ripple mat-checkbox-ripple">-->
+<!--                    <div class="mat-ripple-element mat-checkbox-persistent-ripple">-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                  <div class="mat-checkbox-frame">-->
+
+<!--                  </div>-->
+<!--                  <div class="mat-checkbox-background">-->
+<!--                    <svg version="1.1" focusable="false" viewBox="0 0 24 24" xml:space="preserve" class="mat-checkbox-checkmark">-->
+<!--                      <path fill="none" stroke="white" d="M4.1,12.7 9,17.6 20.3,6.3" class="mat-checkbox-checkmark-path">-->
+
+<!--                      </path>-->
+<!--                    </svg>-->
+<!--                    <div class="mat-checkbox-mixedmark">-->
+
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </div>-->
+                <span class="mat-checkbox-label">
+                  <span style="display: none;">
+                    &nbsp;
+                  </span>
+                  Remember Me
+                </span>
+              </label>
+              <a class="forgot-password ng-tns-c167-53" href="/pages/auth/forgot-password"> Forgot Password? </a>
+            </mat-checkbox>
+
+
             <button
               mat-raised-button
               color="primary"
@@ -52,7 +87,7 @@
 
             <button
               mat-raised-button
-              class="login-button">
+              class="login-button1">
               Login with Google
             </button>
           </form>
@@ -125,7 +160,7 @@
                 required
                 minlength="6"
                 name="repassword"
-                ngModel
+                [(ngModel)]="userInfor.password"
                 #repassword="ngModel">
               <mat-error *ngIf="repassword.touched && !repassword.valid">
                 <span *ngIf="repassword.errors.required">Password is required</span>
@@ -136,6 +171,17 @@
               </mat-error>
               <mat-icon matSuffix>lock</mat-icon>
             </mat-form-field>
+
+<!--            <mat-radio-group  name="gender" required [(ngModel)]="userInfor.gender" #gender="ngModel" class="example">-->
+<!--              <mat-radio-button value="Male">Male</mat-radio-button>-->
+<!--              <mat-radio-button value="Female">Female</mat-radio-button>-->
+<!--            </mat-radio-group>-->
+<!--            <mat-form-field appearance="fill" [(ngModel)]="userInfor.birthday">-->
+<!--              <mat-label>Choose a date</mat-label>-->
+<!--              <input matInput [matDatepicker]="picker">-->
+<!--              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>-->
+<!--              <mat-datepicker #picker></mat-datepicker>-->
+<!--            </mat-form-field>-->
             <button
               mat-raised-button
               color="primary"

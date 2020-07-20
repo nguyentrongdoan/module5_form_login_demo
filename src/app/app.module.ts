@@ -12,11 +12,17 @@ import {MatCardModule} from "@angular/material/card";
 import {MatTabsModule} from "@angular/material/tabs";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatButtonModule} from "@angular/material/button";
+import {MatRadioModule} from "@angular/material/radio";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {RouterModule} from "@angular/router";
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import {RoutingModule} from "./router/routing.module";
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegisterUserComponent
+    RegisterUserComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +34,11 @@ import {MatButtonModule} from "@angular/material/button";
     MatCardModule,
     MatTabsModule,
     MatCheckboxModule,
-    MatButtonModule
+    MatButtonModule,
+    MatRadioModule,
+    MatDatepickerModule,
+    RouterModule,
+    RoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
