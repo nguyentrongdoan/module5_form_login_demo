@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisterUserComponent } from './register-user/register-user.component';
 import {MatIconModule} from "@angular/material/icon";
 import {MatFormFieldModule} from "@angular/material/form-field";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {MatCardModule} from "@angular/material/card";
 import {MatTabsModule} from "@angular/material/tabs";
@@ -17,12 +17,15 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import {RouterModule} from "@angular/router";
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import {RoutingModule} from "./router/routing.module";
+import { DemoCompComponent } from './demo-comp/demo-comp.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterUserComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    DemoCompComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,8 @@ import {RoutingModule} from "./router/routing.module";
     MatRadioModule,
     MatDatepickerModule,
     RouterModule,
-    RoutingModule
+    RoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
